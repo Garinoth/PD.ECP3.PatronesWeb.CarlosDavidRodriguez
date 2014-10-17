@@ -1,7 +1,5 @@
 package models.DAO.mem;
 
-import java.util.Map;
-
 import models.DAO.UserDAO;
 import models.entities.User;
 

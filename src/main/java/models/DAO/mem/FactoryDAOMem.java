@@ -16,7 +16,7 @@ public class FactoryDAOMem extends FactoryDAO {
     }
 
     @Override
-    public RoundDAO RoundDAO() {
+    public RoundDAO getRoundDAO() {
         return new RoundDAOMem();
     }
 

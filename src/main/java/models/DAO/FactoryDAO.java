@@ -18,6 +18,6 @@ public abstract class FactoryDAO {
     }
     
     public abstract UserDAO getUserDAO();
-    public abstract RoundDAO RoundDAO();
+    public abstract RoundDAO getRoundDAO();
 
 }

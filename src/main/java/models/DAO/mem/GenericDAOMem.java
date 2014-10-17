@@ -1,12 +1,10 @@
 package models.DAO.mem;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.SortedMap;
 
 import models.DAO.GenericDAO;
-import models.entities.User;
 
 public abstract class GenericDAOMem<ID, T> implements GenericDAO<ID, T> {
 
@@ -31,22 +29,25 @@ public abstract class GenericDAOMem<ID, T> implements GenericDAO<ID, T> {
 
     @Override
     public void delete(T entity) {
+        assert bd.containsValue(entity);
         this.deleteById(this.getId(entity));
     }
 
     @Override
     public void deleteById(ID id) {
+        assert bd.containsKey(id);
         bd.remove(id);  
     }
     
     @Override
-    public Collection<T> findAll() {
-        return this.bd.values();
+    public ArrayList<T> findAll() {
+        return new ArrayList<T>(this.bd.values());
     }
 
     @Override
-    public Collection<T> findAll(int index, int size) {
-        return this.bd.;
+    public ArrayList<T> findAll(int index, int size) {
+        assert index + size + 1 <= this.bd.size();
+        return new ArrayList<T>(new ArrayList<T>(this.bd.values()).subList(index, index + size));
     }
     
     protected abstract ID getId(T entity);
